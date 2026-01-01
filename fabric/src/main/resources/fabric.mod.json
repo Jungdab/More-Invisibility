@@ -1,0 +1,29 @@
+{
+	"schemaVersion": 1,
+	"id": "moreinvisibility",
+	"version": "${version}",
+	"name": "More Invisibility",
+	"description": "This mod skips rendering for invisible mobs, hiding their held items and worn armor.",
+	"authors": [
+		"Jungdab"
+	],
+	"contact": {
+		"sources": "https://github.com/FabricMC/fabric-example-mod"
+	},
+	"license": "All Rights Reserved",
+	"icon": "assets/moreinvisibility/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"me.jungdab.MoreInvisibility"
+		]
+	},
+	"mixins": [
+		"moreinvisibility.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.17.2",
+		"minecraft": "~1.21.1",
+		"java": ">=21"
+	}
+}
