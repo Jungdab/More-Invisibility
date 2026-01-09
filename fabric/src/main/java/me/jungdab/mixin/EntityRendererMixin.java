@@ -1,6 +1,7 @@
 package me.jungdab.mixin;
 
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.client.renderer.culling.Frustum;
 import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.world.entity.Entity;
@@ -13,7 +14,9 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 public class EntityRendererMixin<T extends Entity> {
     @Inject(method = "shouldRender", at = @At("HEAD"), cancellable = true)
     public void isInvisibleCancel(T entity, Frustum camera, double camX, double camY, double camZ, CallbackInfoReturnable<Boolean> cir) {
-        if(entity == Minecraft.getInstance().player) return;
+        LocalPlayer player = Minecraft.getInstance().player;
+        if(player != null && entity == Minecraft.getInstance().player && player.isSpectator()) return;
+
         if(entity.isInvisible()) cir.setReturnValue(false);
     }
 }
