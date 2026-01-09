@@ -1,6 +1,5 @@
 package me.jungdab.moreinvisibility;
 
-import net.minecraft.world.entity.LivingEntity;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.ModContainer;

@@ -13,6 +13,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 public class EntityRendererMixin<T extends Entity> {
     @Inject(method = "shouldRender", at = @At("HEAD"), cancellable = true)
     public void isInvisibleCancel(T entity, Frustum camera, double camX, double camY, double camZ, CallbackInfoReturnable<Boolean> cir) {
-        if(entity.isInvisibleTo(Minecraft.getInstance().player)) cir.setReturnValue(false);
+        if(entity == Minecraft.getInstance().player) return;
+        if(entity.isInvisible()) cir.setReturnValue(false);
     }
 }
